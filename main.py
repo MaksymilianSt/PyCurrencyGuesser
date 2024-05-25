@@ -10,7 +10,8 @@ def get_user_choice():
     while True:
         print("Choose an option:")
         print("1: to play a game")
-        print("2: to see score")
+        print("2: pvp")
+        print("3: to see score")
         print("q: Quit")
         choice = input("Enter your choice: ")
 
@@ -41,7 +42,18 @@ def start():
                 Game(currency_service).play(new_player)
                 scoresService.add_player(new_player)
                 print(SPACE_LABEL)
+
             if choice == 2:
+                print(SPACE_LABEL)
+                print('first player')
+                player1 = Player()
+                player1.set_name()
+                print('second player')
+                player2 = Player()
+                player2.set_name()
+                winner = Game(currency_service).pvp(player1, player2)
+                scoresService.add_player(winner)
+            if choice == 3:
                 print(SPACE_LABEL)
                 print('\t\t\t\t\t **SCORES**\n')
                 for index, score in enumerate(scoresService.get_scores()):
