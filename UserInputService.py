@@ -22,3 +22,23 @@ class UserInputService:
         symbol = CurrencyCodes().get_symbol(currency) if (CurrencyCodes().get_symbol(currency)) is not None else '?'
         name = CurrencyCodes().get_currency_name(currency)  if CurrencyCodes().get_currency_name(currency) is not None else '?'
         return '[ ' + currency + ', ' + symbol + ',' + name + ']'
+
+    def get_main_user_choice(self):
+        while True:
+            print("Choose an option:")
+            print("1: to play a game")
+            print("2: pvp")
+            print("3: to see score")
+            print("q: Quit")
+            choice = input("Enter your choice: ")
+
+            if choice == 'q':
+                return choice
+            elif choice.isdigit():
+                choice = int(choice)
+                if 1 <= choice <= 3:
+                    return choice
+                else:
+                    print("Invalid choice, please enter a number between 1 and 3.")
+            else:
+                print("Invalid input, please enter a number or 'q' to quit.")

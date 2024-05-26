@@ -10,7 +10,7 @@ class CurrencyAPIService:
     def fetch_data(self):
         try:
             response = requests.get(self.base_url)
-            response.raise_for_status()  # Raises an HTTPError for bad responses
+            response.raise_for_status()
             data = response.json()
             if data.get("result") == "success":
                 self.rates = data.get("rates", {})
